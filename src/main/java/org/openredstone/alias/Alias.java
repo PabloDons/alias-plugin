@@ -163,7 +163,14 @@ public class Alias extends JavaPlugin implements Listener
 
 		for (String cmd : commands)
 		{
-			player.performCommand(cmd);
+			if (cmd.substring(0, Math.min(cmd.length(), 2)) == "<s>")
+			{
+				Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), cmd.substring(3,cmd.length()-1));
+			}
+			else
+			{
+				player.performCommand(cmd);
+			}
 		}
 	}
 
